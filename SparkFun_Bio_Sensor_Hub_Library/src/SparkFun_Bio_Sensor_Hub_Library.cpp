@@ -324,6 +324,12 @@ bioData SparkFun_Bio_Sensor_Hub::readSensorBpm(){
     libLedBpm.redLed |= uint32_t(bpmSenArr[4]) << 8; 
     libLedBpm.redLed |= bpmSenArr[5]; 
 
+
+    // Value of LED three...
+    libLedBpm.greenLed = uint32_t(bpmSenArr[6]) << 16; 
+    libLedBpm.greenLed |= uint32_t(bpmSenArr[7]) << 8; 
+    libLedBpm.greenLed |= bpmSenArr[8]; 
+
     // -- What happened here? -- There are two uint32_t values that are given by
     // the sensor for LEDs that do not exists on the MAX30101. So we have to
     // request those empty values because they occupy the buffer:
@@ -362,6 +368,10 @@ bioData SparkFun_Bio_Sensor_Hub::readSensorBpm(){
     libLedBpm.redLed |= uint32_t(bpmSenArrTwo[4]) << 8; 
     libLedBpm.redLed |= bpmSenArrTwo[5]; 
 
+    // Value of LED three...
+    libLedBpm.greenLed = uint32_t(bpmSenArr[6]) << 16; 
+    libLedBpm.greenLed |= uint32_t(bpmSenArr[7]) << 8; 
+    libLedBpm.greenLed |= bpmSenArr[8]; 
     // -- What happened here? -- There are two uint32_t values that are given by
     // the sensor for LEDs that do not exists on the MAX30101. So we have to
     // request those empty values because they occupy the buffer:
@@ -403,6 +413,7 @@ bioData SparkFun_Bio_Sensor_Hub::readSensorBpm(){
   else {
     libLedBpm.irLed = 0;
     libLedBpm.redLed = 0; 
+    libLedBpm.greenLed = 0;
     libLedBpm.heartRate = 0; 
     libLedBpm.confidence = 0;
     libLedBpm.oxygen = 0; 
